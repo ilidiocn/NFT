@@ -71,6 +71,21 @@ const Details = ({route, navigation}) => {
             <SubInfo/>
             <View style={{padding:SIZES.font}}>
               <DetailsDes data={data}/>
+              {
+                //check if data.bids.length is greater  than 0 than we render the element
+                //attention that here && does not mean AND but THEN -> if(data.bids.length>0){}
+                data.bids.length>0 &&(
+                  <Text style={{
+                      fontSize: SIZES.font,
+                      fontFamily: FONTS.semiBold,
+                      color: COLORS.primary
+                      }}>
+                    Current Bids
+                  </Text>
+
+                )
+              }
+
             </View>
           </React.Fragment>
         )}

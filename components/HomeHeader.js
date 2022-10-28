@@ -2,7 +2,7 @@ import { View, Text, Image, TextInput } from "react-native";
 import {COLORS, FONTS, SIZES, assets} from '../constants'
 
 
-const HomeHeader=(onSearch)=>{
+const HomeHeader=({onSearch})=>{
     return(
         <View style={{
             backgroundColor: COLORS.primary,
@@ -81,5 +81,5 @@ const HomeHeader=(onSearch)=>{
         </View>
     )
 }
-
+//https://expo.dev/@ilidiocn/react_native_app?serviceType=classic&distribution=expo-go
 export default HomeHeader;

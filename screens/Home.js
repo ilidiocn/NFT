@@ -9,17 +9,35 @@ import { FocusedStatusBar, HomeHeader, NFTCard } from "../components";
 //zIndex is what determines if a component comes up or back other
 
 const Home=()=>{
+
+    const [nftData, setNftData]= useState(NFTData);
+
+    const handleSearch=(value)=>{
+        if(!value.length) return setNftData(NFTData); // if value.length setNftData to original NFTData
+
+        //than
+        //filter() its a function like a map whitch treats each item in it 
+        //Checking if name form item to lowercase includes value
+        const filteredData= NFTData.filter((item)=> item.name.toLocaleLowerCase().includes(value.toLocaleLowerCase()));
+        //check if at less exist one element from inclusion
+        if(filteredData.length){
+            setNftData(filteredData);
+        }else{
+            setNftData(NFTData);  
+        }
+    }
+
     return(
         <SafeAreaView style={{flex:1}}>
             <FocusedStatusBar background={COLORS.primary}/>
             <View style={{flex:1}}>
                 <View style={{zIndex:0}}>
                     <FlatList
-                        data={NFTData}
+                        data={nftData}
                         renderItem={({item})=><NFTCard data={item}/>}
                         keyExtractor={(item)=>item.id}
                         showsVerticalScrollIndicator={false}
-                        ListHeaderComponent={<HomeHeader/>}
+                        ListHeaderComponent={<HomeHeader onSearch={handleSearch}/>}
                         
                     />
 
